@@ -123,7 +123,7 @@ const Demo = () => {
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
               <motion.a
                 href="/register"
-                className="flex justify-center w-full sm:w-auto py-3.5 px-8 bg-[#3395ff] text-white rounded-xl font-sora font-bold text-base hover:bg-blue-700 transition-all no-underline shadow-lg shadow-blue-500/20"
+                className="flex justify-center w-full sm:w-auto py-3 px-8 bg-[#3395ff] text-white rounded-xl font-sora font-bold text-base hover:bg-blue-700 transition-all no-underline shadow-lg shadow-blue-500/20"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -135,7 +135,7 @@ const Demo = () => {
               </motion.a>
               <motion.a
                 href="#platforms"
-                className="flex justify-center w-full sm:w-auto py-3.5 px-8 bg-white text-[#3395ff] border-2 border-[#3395ff] hover:border-blue-700 rounded-xl font-sora font-bold text-base hover:text-blue-700 transition-all no-underline"
+                className="flex justify-center w-full sm:w-auto py-3 px-8 bg-white text-[#3395ff] border-2 border-[#3395ff] hover:border-blue-700 rounded-xl font-sora font-bold text-base hover:text-blue-700 transition-all no-underline"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
