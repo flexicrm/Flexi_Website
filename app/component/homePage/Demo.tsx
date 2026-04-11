@@ -107,7 +107,7 @@ function Demo() {
                   >
                     Smarter
                   </motion.span>{" "}
-                  with Flexi CRM
+                  with CRM
                 </h1>
               </motion.div>
 
