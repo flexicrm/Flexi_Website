@@ -60,89 +60,103 @@ const Web_Mobile = () => {
   }
 
   return (
-    <section id="platforms" className="py-25 px-[5%] bg-[#F8F9FB]">
-      <div className="text-center max-w-[720px] mx-auto mb-15">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl lg:text-[2.4rem] font-extrabold text-[#2D3142] mb-4">
-            Available on <span className="text-[#3395ff]">Web & Mobile</span>
-          </h2>
-          <p className="text-[1.05rem] text-[#6B7280] leading-relaxed">
-            Access your complete HRMS from anywhere — desktop, tablet, or mobile. Seamless experience across all your devices.
-          </p>
-        </motion.div>
-      </div>
-
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-[1100px] mx-auto"
-      >
-        {platforms.map((platform, idx) => (
+    // FIX: Standardized section padding
+    <section id="platforms" className="py-16 lg:py-24 bg-[#F8F9FB] relative">
+      {/* FIX: Added proper container wrapper */}
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Header Section */}
+        <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
           <motion.div
-            key={idx}
-            variants={idx === 0 ? cardVariants : cardVariantsRight}
-            whileHover={{ y: -8 }}
-            className="bg-white border border-[#E5E7EB] rounded-2xl p-10 shadow-[0_8px_32px_rgba(30,95,168,0.12)] hover:shadow-[0_20px_60px_rgba(30,95,168,0.16)] transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
-            <motion.div
-              className={`inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full text-[0.8rem] font-bold font-['Sora'] mb-5 ${
-                platform.type === "web"
-                  ? "bg-[#e8f0fb] text-[#154080]"
-                  : "bg-[#F3E8FF] text-[#7C3AED]"
-              }`}
-              whileHover={{ scale: 1.05 }}
-            >
-              {platform.badge}
-            </motion.div>
-            <h3 className="text-[1.8rem] font-extrabold text-[#2D3142] mb-3.5">{platform.title}</h3>
-            <p className="text-base text-[#6B7280] leading-relaxed mb-6">{platform.description}</p>
-            <ul className="list-none mb-7">
-              {platform.features.map((feature, fIdx) => (
-                <motion.li
-                  key={fIdx}
-                  className="flex items-center gap-2.5 py-2.5 border-b border-[#E5E7EB] text-[0.92rem] text-[#2D3142] last:border-b-0"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + fIdx * 0.05 }}
-                >
-                  <motion.svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#22c55e"
-                    strokeWidth="2.5"
-                    className="w-4.5 h-4.5 flex-shrink-0"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.4 + fIdx * 0.05, type: "spring" }}
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </motion.svg>
-                  {feature}
-                </motion.li>
-              ))}
-            </ul>
-            <motion.a
-              href="#"
-              className={`inline-flex items-center gap-2 py-3 px-7 ${platform.btnColor} text-white rounded-[10px] font-['Sora'] font-bold text-[0.95rem] no-underline transition-all`}
-              whileHover={{ x: 5, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {platform.btnText}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-4.5 h-4.5">
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
-            </motion.a>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-[#2D3142] mb-4">
+              Available on <span className="text-[#3395ff]">Web & Mobile</span>
+            </h2>
+            <p className="text-base text-[#6B7280] leading-relaxed">
+              Access your complete HRMS from anywhere — desktop, tablet, or mobile. Seamless experience across all your devices.
+            </p>
           </motion.div>
-        ))}
-      </motion.div>
+        </div>
+
+        {/* Cards Grid */}
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          // FIX: Updated gap spacing for better flow
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto"
+        >
+          {platforms.map((platform, idx) => (
+            <motion.div
+              key={idx}
+              variants={idx === 0 ? cardVariants : cardVariantsRight}
+              whileHover={{ y: -8 }}
+              // FIX: Responsive card padding (p-6 on mobile, p-10 on desktop)
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-6 lg:p-10 shadow-[0_8px_32px_rgba(30,95,168,0.12)] hover:shadow-[0_20px_60px_rgba(30,95,168,0.16)] transition-all duration-300"
+            >
+              <motion.div
+                className={`inline-flex items-center gap-2 py-1.5 px-3.5 rounded-full text-xs font-bold mb-5 ${
+                  platform.type === "web"
+                    ? "bg-[#e8f0fb] text-[#154080]"
+                    : "bg-[#F3E8FF] text-[#7C3AED]"
+                }`}
+                whileHover={{ scale: 1.05 }}
+              >
+                {platform.badge}
+              </motion.div>
+              
+              <h3 className="text-2xl lg:text-3xl font-extrabold text-[#2D3142] mb-3">{platform.title}</h3>
+              <p className="text-sm lg:text-base text-[#6B7280] leading-relaxed mb-6">{platform.description}</p>
+              
+              <ul className="list-none mb-8">
+                {platform.features.map((feature, fIdx) => (
+                  <motion.li
+                    key={fIdx}
+                    className="flex items-center gap-3 py-2.5 border-b border-[#E5E7EB] text-sm lg:text-[0.92rem] text-[#2D3142] last:border-b-0"
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + fIdx * 0.05 }}
+                  >
+                    <motion.svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#22c55e"
+                      strokeWidth="2.5"
+                      className="w-5 h-5 flex-shrink-0"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.4 + fIdx * 0.05, type: "spring" }}
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </motion.svg>
+                    {feature}
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* FIX: Made button responsive width on mobile */}
+              <motion.a
+                href="#"
+                className={`inline-flex justify-center w-full sm:w-auto items-center gap-2 py-3.5 px-8 ${platform.btnColor} text-white rounded-xl font-bold text-sm lg:text-[0.95rem] no-underline transition-all`}
+                whileHover={{ x: 5, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {platform.btnText}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-5 h-5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </motion.a>
+            </motion.div>
+          ))}
+        </motion.div>
+        
+      </div>
     </section>
   )
 }

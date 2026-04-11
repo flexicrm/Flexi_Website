@@ -7,7 +7,7 @@ import Web_Mobile from "./Web_Mobile"
 
 const HrmsMain_Page = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden max-w-[100vw] w-full">
         <Demo/>
         <HR_Management/>
         <Web_Mobile/>

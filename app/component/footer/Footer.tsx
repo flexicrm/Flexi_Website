@@ -67,9 +67,6 @@ function Footer() {
                 height={32}
                 className="w-8 h-8 object-contain transition-transform duration-300 hover:scale-105" 
               />
-              <span className="font-sora font-extrabold text-xl text-white">
-                Flexi <span className="text-blue-400">CRM</span>
-              </span>
             </div>
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-xs mx-auto sm:mx-0">
               The smart, flexible CRM platform for growing teams. Manage leads, close deals, and scale your business — all

@@ -1,4 +1,3 @@
-// app/components/Demo.tsx
 "use client"
 
 import { motion, useScroll, useTransform, Variants } from "framer-motion"
@@ -10,7 +9,6 @@ const Demo = () => {
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.95])
   const heroScale = useTransform(scrollY, [0, 300], [1, 0.98])
 
-
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
@@ -20,17 +18,12 @@ const Demo = () => {
   }, [])
 
   // Animation variants
-  const navVariants : Variants = {
-    initial: { y: -100, opacity: 0 },
-    animate: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
-  }
-
-  const heroLeftVariants : Variants = {
+  const heroLeftVariants: Variants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay: 0.2, ease: "easeOut" } }
   }
 
-  const heroRightVariants : Variants= {
+  const heroRightVariants: Variants = {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, delay: 0.4, ease: "easeOut" } }
   }
@@ -54,46 +47,41 @@ const Demo = () => {
   }
 
   return (
-    <>
+    <motion.section
+      id="home"
+      style={{ opacity: heroOpacity, scale: heroScale }}
+      className="min-h-screen pt-28 pb-20 lg:pt-36 lg:pb-32 flex items-center relative overflow-hidden bg-gradient-to-br from-[#f8f9fb] via-[#eef3fb] to-[#f3e8ff]"
+    >
+      {/* Animated background blobs */}
+      <motion.div
+        className="absolute -top-[120px] -right-[120px] w-[600px] h-[600px] rounded-full bg-radial from-[rgba(139,92,246,0.08)] to-transparent pointer-events-none"
+        animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-radial from-[rgba(30,95,168,0.06)] to-transparent pointer-events-none"
+        animate={{ scale: [1, 1.3, 1], rotate: [0, -90, 0] }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+      />
 
-      {/* HERO SECTION */}
-      <motion.section
-  id="home"
-  style={{ opacity: heroOpacity, scale: heroScale }}
-  className="min-h-screen pt-[120px] pb-20 px-[5%] flex items-center relative overflow-hidden bg-gradient-to-br from-[#f8f9fb] via-[#eef3fb] to-[#f3e8ff]"
->
-        {/* Animated background blobs */}
-        <motion.div
-          className="absolute -top-[120px] -right-[120px] w-[600px] h-[600px] rounded-full bg-radial from-[rgba(139,92,246,0.08)] to-transparent pointer-events-none"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-radial from-[rgba(30,95,168,0.06)] to-transparent pointer-events-none"
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-        />
-
-        <div className="grid lg:grid-cols-2 gap-15 items-center max-w-[1240px] mx-auto w-full">
+      {/* Standardized Container Padding */}
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center w-full">
+          
+          {/* Left Content */}
           <motion.div
             variants={heroLeftVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="lg:text-left text-center"
+            className="lg:text-left text-center flex flex-col items-center lg:items-start"
           >
             <motion.div
               variants={badgeVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 bg-[#e0e7ff] text-[#3730a3] border border-[#c7d2fe] py-1.5 px-4 rounded-full text-[0.82rem] font-semibold font-['Sora'] mb-5"
+              className="inline-flex items-center gap-2 bg-[#e0e7ff] text-[#3730a3] border border-[#c7d2fe] py-1.5 px-4 rounded-full text-[0.82rem] font-semibold font-sora mb-6"
             >
               <motion.span
                 className="w-2 h-2 rounded-full bg-green-500"
@@ -104,7 +92,7 @@ const Demo = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.15] text-[#2D3142] mb-4"
+              className="font-extrabold text-gray-800 mb-3 text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -122,20 +110,21 @@ const Demo = () => {
             </motion.h1>
 
             <motion.p
-              className="text-[1.05rem] text-[#6B7280] leading-relaxed mb-8 max-w-[480px] lg:mx-0 mx-auto"
+              className="text-base lg:text-lg text-[#6B7280] leading-relaxed mb-10 max-w-lg lg:mx-0 mx-auto"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              Employee management, payroll processing, attendance tracking, and comprehensive HR operations — all unified in one powerful platform. Web & Mobile ready.
+              Employee management, payroll processing, attendance tracking, and comprehensive HR operations — all unified in one powerful platform.
             </motion.p>
 
-            <div className="flex gap-3.5 flex-wrap justify-center lg:justify-start">
+            {/* Mobile Responsive Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
               <motion.a
-                 href="/register"
-                className="py-3.5 px-8 bg-[#3395ff] text-white border-none rounded-[10px] font-['Sora'] font-bold text-base hover:bg-blue-700 transition-all no-underline"
-                whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 25px rgba(139,92,246,0.4)" }}
+                href="/register"
+                className="flex justify-center w-full sm:w-auto py-3.5 px-8 bg-[#3395ff] text-white rounded-xl font-sora font-bold text-base hover:bg-blue-700 transition-all no-underline shadow-lg shadow-blue-500/20"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -146,7 +135,7 @@ const Demo = () => {
               </motion.a>
               <motion.a
                 href="#platforms"
-                className="py-3.5 px-8 bg-white text-[#3395ff] border-2 border-[#3395ff] hover:border-blue-700 rounded-[10px] font-['Sora'] font-bold text-base hover:text-blue-700 transition-all no-underline"
+                className="flex justify-center w-full sm:w-auto py-3.5 px-8 bg-white text-[#3395ff] border-2 border-[#3395ff] hover:border-blue-700 rounded-xl font-sora font-bold text-base hover:text-blue-700 transition-all no-underline"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -163,7 +152,7 @@ const Demo = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex gap-8 mt-10 justify-center lg:justify-start"
+              className="flex flex-wrap justify-center lg:justify-start gap-8 sm:gap-12 mt-12"
             >
               {[
                 { num: "5000+", label: "Active Employees" },
@@ -172,7 +161,7 @@ const Demo = () => {
               ].map((stat, idx) => (
                 <motion.div key={idx} variants={statItemVariants} className="text-left">
                   <motion.div
-                    className="font-['Sora'] text-[1.6rem] font-extrabold text-[#8B5CF6]"
+                    className="font-sora text-2xl sm:text-3xl font-extrabold text-[#8B5CF6]"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 + idx * 0.1 }}
@@ -180,37 +169,40 @@ const Demo = () => {
                   >
                     {stat.num}
                   </motion.div>
-                  <div className="text-[0.8rem] text-[#6B7280]">{stat.label}</div>
+                  <div className="text-xs sm:text-sm font-medium text-[#6B7280] uppercase tracking-wider mt-1">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
 
+          {/* Right Dashboard */}
           <motion.div
             variants={heroRightVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="relative"
+            className="relative max-w-xl mx-auto lg:max-w-none w-full"
           >
+            {/* Dashboard Content stays exactly the same, but inherits proper container constraints */}
+            {/* ... Your Existing Dashboard Code ... */}
             <motion.div
-              className="absolute -top-5 right-5 bg-white rounded-xl py-3 px-4 shadow-[0_8px_32px_rgba(30,95,168,0.12)] border border-[#E5E7EB] z-30"
+              className="absolute -top-4 -right-2 sm:-right-4 bg-white rounded-xl py-3 px-4 shadow-[0_8px_32px_rgba(30,95,168,0.12)] border border-[#E5E7EB] z-30"
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="font-['Sora'] font-extrabold text-[1.2rem] text-[#8B5CF6]">147</div>
-              <div className="text-[0.72rem] text-[#6B7280]">Active Employees</div>
+              <div className="font-sora font-extrabold text-xl text-[#8B5CF6]">147</div>
+              <div className="text-[10px] sm:text-xs text-[#6B7280]">Active Employees</div>
             </motion.div>
 
             <motion.div
-              className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(30,95,168,0.16)] p-5 border border-[#E5E7EB] relative z-20"
+              className="bg-white rounded-2xl shadow-[0_20px_60px_rgba(30,95,168,0.16)] p-4 sm:p-5 border border-[#E5E7EB] relative z-20 w-full overflow-hidden"
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
             >
               <div className="flex items-center justify-between mb-4">
-                <div className="font-['Sora'] font-bold text-[0.95rem] text-[#2D3142]">Payroll Dashboard</div>
+                <div className="font-sora font-bold text-sm text-[#2D3142]">Payroll Dashboard</div>
                 <motion.div
-                  className="bg-[#e0e7ff] text-[#5b21b6] text-[0.7rem] font-bold py-0.5 px-2.5 rounded-full"
+                  className="bg-[#e0e7ff] text-[#5b21b6] text-[10px] font-bold py-0.5 px-2.5 rounded-full"
                   animate={{ opacity: [1, 0.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
@@ -218,7 +210,7 @@ const Demo = () => {
                 </motion.div>
               </div>
 
-              <div className="grid grid-cols-3 gap-2.5 mb-4">
+              <div className="grid grid-cols-3 gap-2 sm:gap-2.5 mb-4">
                 {[
                   { num: "₹18.2L", label: "This Month", color: "text-[#8B5CF6]" },
                   { num: "142", label: "Payslips", color: "text-[#F5921E]" },
@@ -226,21 +218,21 @@ const Demo = () => {
                 ].map((item, idx) => (
                   <motion.div
                     key={idx}
-                    className="bg-[#F8F9FB] rounded-[10px] p-3"
+                    className="bg-[#F8F9FB] rounded-[10px] p-2 sm:p-3"
                     whileHover={{ scale: 1.02, backgroundColor: "#f0f2f5" }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 + idx * 0.1 }}
                   >
-                    <div className={`font-['Sora'] text-[1.3rem] font-extrabold ${item.color}`}>
+                    <div className={`font-sora text-base sm:text-xl font-extrabold ${item.color}`}>
                       {item.num}
                     </div>
-                    <div className="text-[0.72rem] text-[#6B7280]">{item.label}</div>
+                    <div className="text-[10px] sm:text-xs text-[#6B7280]">{item.label}</div>
                   </motion.div>
                 ))}
               </div>
 
-              <div className="flex items-end gap-2 h-20 mb-4 bg-[#F8F9FB] p-3 rounded-[10px]">
+              <div className="flex items-end gap-2 h-20 mb-4 bg-[#F8F9FB] p-2 sm:p-3 rounded-[10px]">
                 {[
                   { height: 45, label: "Jan" },
                   { height: 55, label: "Feb" },
@@ -254,37 +246,37 @@ const Demo = () => {
                       animate={{ height: `${item.height}%` }}
                       transition={{ duration: 0.8, delay: 1 + idx * 0.1, ease: "easeOut" }}
                     />
-                    <div className="text-[0.65rem] text-[#6B7280]">{item.label}</div>
+                    <div className="text-[10px] sm:text-xs text-[#6B7280]">{item.label}</div>
                   </div>
                 ))}
               </div>
 
               <div className="flex flex-col gap-2">
                 {[
-                  { initials: "RS", name: "Ravi Shankar", dept: "Engineering • EMP-1042", status: "Present", statusColor: "bg-green-100 text-green-700" },
-                  { initials: "PN", name: "Priya Nair", dept: "Marketing • EMP-1045", status: "WFH", statusColor: "bg-blue-100 text-blue-700" },
-                  { initials: "KM", name: "Karan Mehta", dept: "Sales • EMP-1050", status: "On Leave", statusColor: "bg-amber-100 text-amber-700" }
+                  { initials: "RS", name: "Ravi Shankar", dept: "Engineering", status: "Present", statusColor: "bg-green-100 text-green-700" },
+                  { initials: "PN", name: "Priya Nair", dept: "Marketing", status: "WFH", statusColor: "bg-blue-100 text-blue-700" },
+                  { initials: "KM", name: "Karan Mehta", dept: "Sales", status: "On Leave", statusColor: "bg-amber-100 text-amber-700" }
                 ].map((emp, idx) => (
                   <motion.div
                     key={idx}
-                    className="flex items-center gap-2.5 p-2.5 bg-[#F8F9FB] rounded-[10px]"
+                    className="flex items-center justify-between gap-2 p-2 sm:p-2.5 bg-[#F8F9FB] rounded-[10px]"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 1.2 + idx * 0.1 }}
-                    whileHover={{ scale: 1.02, backgroundColor: "#eef2f5" }}
                   >
-                    <motion.div
-                      className="w-8 h-8 rounded-full flex items-center justify-center font-['Sora'] font-bold text-[0.8rem] text-white flex-shrink-0"
-                      style={{ background: idx === 0 ? "#8b5cf6" : idx === 1 ? "#f59e0b" : "#1e5fa8" }}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                    >
-                      {emp.initials}
-                    </motion.div>
-                    <div className="flex-1">
-                      <div className="font-['Sora'] font-semibold text-[0.83rem] text-[#2D3142]">{emp.name}</div>
-                      <div className="text-[0.72rem] text-[#6B7280]">{emp.dept}</div>
+                    <div className="flex items-center gap-2 sm:gap-3 overflow-hidden">
+                      <motion.div
+                        className="w-8 h-8 shrink-0 rounded-full flex items-center justify-center font-sora font-bold text-xs text-white"
+                        style={{ background: idx === 0 ? "#8b5cf6" : idx === 1 ? "#f59e0b" : "#1e5fa8" }}
+                      >
+                        {emp.initials}
+                      </motion.div>
+                      <div className="truncate">
+                        <div className="font-sora font-semibold text-xs sm:text-sm text-[#2D3142] truncate">{emp.name}</div>
+                        <div className="text-[10px] sm:text-xs text-[#6B7280] truncate">{emp.dept}</div>
+                      </div>
                     </div>
-                    <div className={`text-[0.7rem] font-bold py-0.5 px-2 rounded-full ${emp.statusColor}`}>
+                    <div className={`text-[10px] font-bold py-0.5 px-2 rounded shrink-0 ${emp.statusColor}`}>
                       {emp.status}
                     </div>
                   </motion.div>
@@ -293,17 +285,18 @@ const Demo = () => {
             </motion.div>
 
             <motion.div
-              className="absolute -bottom-5 left-5 bg-white rounded-xl py-3 px-4 shadow-[0_8px_32px_rgba(30,95,168,0.12)] border border-[#E5E7EB] z-30"
+              className="absolute -bottom-4 -left-2 sm:-left-4 bg-white rounded-xl py-3 px-4 shadow-[0_8px_32px_rgba(30,95,168,0.12)] border border-[#E5E7EB] z-30"
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             >
-              <div className="font-['Sora'] font-extrabold text-[1.2rem] text-[#8B5CF6]">₹18.2L</div>
-              <div className="text-[0.72rem] text-[#6B7280]">Monthly Payroll</div>
+              <div className="font-sora font-extrabold text-xl text-[#8B5CF6]">₹18.2L</div>
+              <div className="text-[10px] sm:text-xs text-[#6B7280]">Monthly Payroll</div>
             </motion.div>
           </motion.div>
+
         </div>
-      </motion.section>
-    </>
+      </div>
+    </motion.section>
   )
 }
 

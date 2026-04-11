@@ -108,49 +108,58 @@ const HR_Management = () => {
   }
 
   return (
-    <section id="features" className="py-25 px-[5%] bg-white">
-      <div className="text-center max-w-[720px] mx-auto mb-15">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-4xl lg:text-[2.4rem] font-extrabold text-[#2D3142] mb-4">
-            Everything You Need to <span className="text-[#3395ff]">Manage HR</span>
-          </h2>
-          <p className="text-[1.05rem] text-[#6B7280] leading-relaxed">
-            Comprehensive HR management system covering every aspect from employee onboarding to payroll processing, all in one unified platform.
-          </p>
-        </motion.div>
-      </div>
-
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 max-w-[1100px] mx-auto"
-      >
-        {features.map((feature, idx) => (
+    // FIX: Standardized section padding
+    <section id="features" className="py-16 lg:py-24 bg-white relative">
+      {/* FIX: Added proper container wrapper */}
+      <div className="container mx-auto px-4 relative z-10">
+        
+        {/* Header Section */}
+        <div className="text-center max-w-2xl mx-auto mb-12 lg:mb-16">
           <motion.div
-            key={idx}
-            variants={itemVariants}
-            whileHover={{ y: -8, transition: { duration: 0.2 } }}
-            className="bg-white border border-[#E5E7EB] rounded-[16px] p-8 shadow-[0_2px_8px_rgba(30,95,168,0.08)] hover:shadow-[0_8px_32px_rgba(30,95,168,0.12)] transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
           >
-            <motion.div
-              className={`w-14 h-14 rounded-[14px] flex items-center justify-center mb-5 ${getIconBg(feature.color)}`}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="w-7 h-7">{feature.icon}</div>
-            </motion.div>
-            <h4 className="text-[1.15rem] font-bold text-[#2D3142] mb-3">{feature.title}</h4>
-            <p className="text-[0.95rem] text-[#6B7280] leading-relaxed">{feature.description}</p>
+            <h2 className="text-3xl lg:text-4xl font-extrabold text-[#2D3142] mb-4">
+              Everything You Need to <span className="text-[#3395ff]">Manage HR</span>
+            </h2>
+            <p className="text-base text-[#6B7280] leading-relaxed">
+              Comprehensive HR management system covering every aspect from employee onboarding to payroll processing, all in one unified platform.
+            </p>
           </motion.div>
-        ))}
-      </motion.div>
+        </div>
+
+        {/* Features Grid */}
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          // FIX: Updated gap spacing for better mobile vs desktop flow
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto"
+        >
+          {features.map((feature, idx) => (
+            <motion.div
+              key={idx}
+              variants={itemVariants}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
+              className="bg-white border border-[#E5E7EB] rounded-2xl p-6 lg:p-8 shadow-[0_2px_8px_rgba(30,95,168,0.08)] hover:shadow-[0_8px_32px_rgba(30,95,168,0.12)] transition-all duration-300"
+            >
+              <motion.div
+                className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 ${getIconBg(feature.color)}`}
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="w-7 h-7">{feature.icon}</div>
+              </motion.div>
+              <h4 className="text-lg font-bold text-[#2D3142] mb-3">{feature.title}</h4>
+              <p className="text-sm text-[#6B7280] leading-relaxed">{feature.description}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+      </div>
     </section>
   )
 }
