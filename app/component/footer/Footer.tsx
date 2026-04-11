@@ -2,8 +2,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Flexi_CRM_Full_Logo from "../../../public/Flexi_CRM_Logo.svg";
+
 
  function Footer() {
   const footerSections = [
@@ -53,10 +56,12 @@ import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
           {/* Logo Section */}
           <div className="md:col-span-4">
             <div className="flex items-center gap-2 mb-4">
-              <svg width="32" height="28" viewBox="0 0 60 50" fill="none">
-                <path d="M4 4h20v10H14v6h8v10h-8v6h10v10H4V4z" fill="#4a90d9" />
-                <path d="M28 4l16 22L28 46V4z" fill="#F5921E" />
-              </svg>
+              <Image 
+              src={Flexi_CRM_Full_Logo} 
+              alt="Flexi CRM Logo" 
+              height={38} 
+              className="transition-transform duration-300 group-hover:scale-105" 
+            />
               <span className="font-sora font-extrabold text-xl text-white">
                 Flexi <span className="text-primary">CRM</span>
               </span>
@@ -99,7 +104,7 @@ import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
                 key={idx}
                 href="#"
                 whileHover={{ scale: 1.15, y: -2 }}
-                className="w-9 h-9 bg-white/10 rounded flex items-center justify-center text-gray-400 hover:bg-accent hover:text-white transition-all duration-250"
+                className="w-9 h-9 bg-white/10 rounded flex items-center justify-center text-gray-400 hover:bg-[#3395ff] hover:text-white transition-all duration-250"
               >
                  <Icon className="w-6 h-6 text-white" />
               </motion.a>

@@ -88,7 +88,7 @@ function Demo() {
                     transition={{ duration: 1.5, repeat: Infinity }}
                     className="w-2 h-2 rounded-full bg-green-500"
                   />
-                  <span className="text-green-700 font-semibold text-xs font-sora">Beta Version – Live Now</span>
+                  <span className="text-green-700 font-semibold text-xs font-sora">Beta v1.0 – Now Live</span>
                 </div>
               </motion.div>
 
@@ -98,7 +98,7 @@ function Demo() {
                   <motion.span
                     animate={{ scale: [1, 1.02, 1] }}
                     transition={{ duration: 3, repeat: Infinity }}
-                    className="text-primary inline-block"
+                    className="text-[#3395ff] inline-block"
                   >
                     Smarter
                   </motion.span>{" "}
@@ -117,7 +117,7 @@ function Demo() {
                   <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                     <a
                       href="/register"
-                      className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-bold rounded-xl shadow-lg hover:bg-accent-dark transition-all"
+                      className="inline-flex items-center gap-2 px-8 py-4 bg-[#3395ff] text-white font-bold rounded-xl shadow-lg hover:bg-blue-700 transition-all"
                     >
                       Register Now – It's Free
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -126,7 +126,7 @@ function Demo() {
                     </a>
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
-                    <button className="px-8 py-4 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary/5 transition-all">
+                    <button className="px-8 py-4 border-2 border-[#3395ff] text-[#3395ff] font-bold rounded-xl hover:bg-primary/5 transition-all cursor-pointer">
                       ▶ View Demo
                     </button>
                   </motion.div>

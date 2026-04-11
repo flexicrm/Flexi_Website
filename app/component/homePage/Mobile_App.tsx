@@ -96,7 +96,7 @@ const features: FeatureItem[] = [
                   { icon: "Android", line1: "GET IT ON", line2: "Google Play" },
                 ].map(({ icon, line1, line2 }, idx) => (
                   <motion.div key={idx} whileHover={{ scale: 1.05, y: -3 }}>
-                    <button className="flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/15 hover:border-accent transition-all">
+                    <button className="flex items-center gap-2 px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/15 hover:border-accent transition-all cursor-pointer">
                       <span className="text-xl">{icon}</span>
                       <div className="text-left">
                         <p className="text-xs uppercase opacity-55">{line1}</p>

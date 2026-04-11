@@ -18,7 +18,7 @@ const TermsAnd_contions = () => {
             Privacy Policy
           </h1>
           <p className="text-lg text-white/80 max-w-2xl mx-auto">
-            Learn how we collect, use, and protect your information when you use Flexi CRM
+            Learn how we collect, use, and protect your information when you use CRM
           </p>
           <div className="mt-6 inline-flex items-center gap-2 text-sm text-white/60 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

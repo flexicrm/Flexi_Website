@@ -54,7 +54,7 @@ const Hrms_Pocket = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl lg:text-[2.4rem] font-extrabold text-white mb-4">
-            HRMS in Your <span className="text-[#a78bfa]">Pocket</span>
+            HRMS in Your <span className="text-[#3395ff]">Pocket</span>
           </h2>
           <p className="text-[1.05rem] text-white/70 leading-relaxed">
             Complete mobile experience for employees and managers — from attendance to payslips, everything at your fingertips.

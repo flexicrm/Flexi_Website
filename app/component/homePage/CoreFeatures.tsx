@@ -94,7 +94,7 @@ const coreFeatures: FeatureItem[] = [
           label="Core Features"
           title={
             <>
-              Everything You Need to <span className="text-primary">Manage Leads</span>
+              Everything You Need to <span className="text-[#3395ff]">Manage Leads</span>
             </>
           }
           sub="Powerful tools designed for simplicity. Go from lead capture to closed deal in record time."

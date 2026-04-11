@@ -96,11 +96,11 @@ const Demo = () => {
               className="inline-flex items-center gap-2 bg-[#e0e7ff] text-[#3730a3] border border-[#c7d2fe] py-1.5 px-4 rounded-full text-[0.82rem] font-semibold font-['Sora'] mb-5"
             >
               <motion.span
-                className="w-2 h-2 rounded-full bg-[#8B5CF6]"
+                className="w-2 h-2 rounded-full bg-green-500"
                 animate={{ scale: [1, 1.5, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              <span>Beta v1.0 – Now Live</span>
+              <span className="text-green-700 font-semibold text-xs font-sora">Beta v1.0 – Now Live</span>
             </motion.div>
 
             <motion.h1
@@ -112,7 +112,7 @@ const Demo = () => {
             >
               Complete{" "}
               <motion.span
-                className="text-[#8B5CF6] inline-block"
+                className="text-[#3395ff] inline-block"
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
@@ -133,8 +133,8 @@ const Demo = () => {
 
             <div className="flex gap-3.5 flex-wrap justify-center lg:justify-start">
               <motion.a
-                href="#"
-                className="py-3.5 px-8 bg-[#8B5CF6] text-white border-none rounded-[10px] font-['Sora'] font-bold text-base hover:bg-[#7C3AED] transition-all no-underline"
+                 href="/register"
+                className="py-3.5 px-8 bg-[#3395ff] text-white border-none rounded-[10px] font-['Sora'] font-bold text-base hover:bg-blue-700 transition-all no-underline"
                 whileHover={{ scale: 1.05, y: -2, boxShadow: "0 8px 25px rgba(139,92,246,0.4)" }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -146,7 +146,7 @@ const Demo = () => {
               </motion.a>
               <motion.a
                 href="#platforms"
-                className="py-3.5 px-8 bg-white text-[#1E5FA8] border-2 border-[#1E5FA8] rounded-[10px] font-['Sora'] font-bold text-base hover:bg-[#1E5FA8] hover:text-white transition-all no-underline"
+                className="py-3.5 px-8 bg-white text-[#3395ff] border-2 border-[#3395ff] hover:border-blue-700 rounded-[10px] font-['Sora'] font-bold text-base hover:text-blue-700 transition-all no-underline"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, x: -20 }}
@@ -249,7 +249,7 @@ const Demo = () => {
                 ].map((item, idx) => (
                   <div key={idx} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
                     <motion.div
-                      className="w-full rounded-t-[4px] bg-gradient-to-t from-[#a78bfa] to-[#8b5cf6]"
+                      className="w-full rounded-t-[4px] bg-[#3395ff]"
                       initial={{ height: 0 }}
                       animate={{ height: `${item.height}%` }}
                       transition={{ duration: 0.8, delay: 1 + idx * 0.1, ease: "easeOut" }}

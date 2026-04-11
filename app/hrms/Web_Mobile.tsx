@@ -69,7 +69,7 @@ const Web_Mobile = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl lg:text-[2.4rem] font-extrabold text-[#2D3142] mb-4">
-            Available on <span className="text-[#8B5CF6]">Web & Mobile</span>
+            Available on <span className="text-[#3395ff]">Web & Mobile</span>
           </h2>
           <p className="text-[1.05rem] text-[#6B7280] leading-relaxed">
             Access your complete HRMS from anywhere — desktop, tablet, or mobile. Seamless experience across all your devices.

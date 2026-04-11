@@ -24,7 +24,7 @@ export default function WhyCard({ icon, title, desc }: WhyCardProps) {
           whileHover={{ rotate: [0, -5, 5, 0], transition: { duration: 0.4 } }}
         >
           <div
-            className="rounded-full bg-primary text-black flex items-center justify-center mx-auto mb-5 shadow-md"
+            className="rounded-full bg-[#3395ff] text-black flex items-center justify-center mx-auto mb-5 shadow-md"
             style={{ width: 60, height: 60 }}
           >
             <Icon className="w-6 h-6" />

@@ -1,37 +1,47 @@
-// app/components/Header.tsx
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+// Assuming these are your valid paths. Adjust if needed.
 import Flexi_CRM_Full_Logo from "../../../public/Flexi_CRM_Full_Logo.svg";
 import Flexi_CRM_Logo from "../../../public/Flexi_CRM_Logo.svg";
-import Reusable_Button from "../common/Reusable_Button";
 
 const navItems = [
-  { name: "Flexi CRM", path: "/", hash: "flexi-crm" },
+  { name: "CRM", path: "/", hash: "flexi-crm" },
   { name: "HRMS", path: "/hrms", hash: "hrms" },
   { name: "Contact", path: "/contact", hash: "contact" }
 ];
 
-function Header() {
+ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
+  // Handle scroll effect for sticky header
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", fn);
-    return () => window.removeEventListener("scroll", fn);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (itemPath: string, itemHash: string) => {
+  // Prevent background scrolling when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => { document.body.style.overflow = "unset"; };
+  }, [mobileOpen]);
+
+  const isActive = (itemPath: string) => {
     if (itemPath === "/") {
       return pathname === "/";
     }
-    return pathname === itemPath;
+    return pathname.startsWith(itemPath);
   };
 
   const getNavLink = (item: typeof navItems[0]) => {
@@ -44,122 +54,116 @@ function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-350 ${
+        className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
           scrolled
-            ? "bg-white/96 backdrop-blur-lg shadow-lg"
-            : "bg-white/85 backdrop-blur-lg"
-        } border-b border-gray-200`}
+            ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
+            : "bg-white/90 backdrop-blur-sm py-3"
+        } border-b border-gray-100`}
       >
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between h-[68px]">
-          {/* Logo with Brand Name */}
-          <Link href="/" className="flex items-center gap-2 group">
+        <div className="container mx-auto px-4 flex items-center justify-between h-12 md:h-14">
+          
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group z-50">
             <Image 
               src={Flexi_CRM_Full_Logo} 
               alt="Flexi CRM Logo" 
-              height={40} 
-              className="transition-transform group-hover:scale-105" 
+              height={38} 
+              className="transition-transform duration-300 group-hover:scale-105" 
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={getNavLink(item)}
-                className={`text-sm font-medium relative transition-colors duration-300 ${
-                  isActive(item.path, item.hash)
-                    ? "text-primary"
-                    : "text-gray-700 hover:text-primary"
-                } after:content-[''] after:absolute after:bottom-[-2px] after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-primary after:to-accent after:rounded-full after:transition-all after:duration-300 ${
-                  isActive(item.path, item.hash)
-                    ? "after:w-[70%]"
-                    : "hover:after:w-[70%]"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
+          {/* Desktop Navigation (Hidden on Mobile) */}
+          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+            {navItems.map((item) => {
+              const active = isActive(item.path);
+              return (
+                <Link
+                  key={item.name}
+                  href={getNavLink(item)}
+                  className={`text-sm font-semibold relative py-2 transition-colors duration-300 ${
+                    active ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
+                  } after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:bg-blue-600 after:rounded-t-md after:transition-all after:duration-300 ${
+                    active ? "after:w-full" : "after:w-0 hover:after:w-full"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Right Buttons */}
-          <div className="flex items-center gap-4">
-            <Link
-              href="/login"
-              className="hidden sm:block px-4 py-2 text-primary font-semibold border-2 border-primary rounded-lg hover:bg-primary hover:text-white transition-all duration-250"
-            >
-              Login
-            </Link>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/register"
-                className="hidden sm:block px-6 py-2 bg-gradient-to-r from-primary to-accent text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-250"
-              >
-                Register Now
-              </Link>
-            </motion.div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-gray-800"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          {/* Mobile Hamburger Button */}
+          <button 
+            className="md:hidden flex items-center justify-center p-2 -mr-2 text-gray-600 hover:text-blue-600 transition-colors z-50"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle Menu"
+          >
+            {mobileOpen ? (
+              // Close Icon
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
-            </button>
-          </div>
+            ) : (
+              // Hamburger Menu Icon
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            )}
+          </button>
+
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Overlay */}
       <div
-        className={`fixed inset-0 z-50 bg-black/50 transition-all duration-300 ${
+        className={`fixed inset-0 z-[90] bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
           mobileOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={() => setMobileOpen(false)}
+      />
+
+      {/* Mobile Drawer Panel */}
+      <div
+        className={`fixed top-0 right-0 z-[95] h-full w-[280px] sm:w-[320px] bg-white shadow-2xl transition-transform duration-300 ease-in-out md:hidden flex flex-col ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        onClick={(e) => e.stopPropagation()}
       >
-        <div
-          className={`absolute right-0 top-0 h-full w-64 bg-white shadow-xl transition-transform duration-300 ${
-            mobileOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="pt-6 px-4 mb-4 flex items-center gap-2">
-            <Image src={Flexi_CRM_Logo} alt="Flexi CRM Logo" width={28} height={28} />
-            <span className="text-lg font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Flexi CRM
+        {/* Drawer Header */}
+        <div className="px-6 py-5 border-b border-gray-100 flex items-center justify-between mt-1">
+          <div className="flex items-center gap-2">
+            <Image src={Flexi_CRM_Logo} alt="Flexi CRM Icon" width={28} height={28} />
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent tracking-tight">
+              Flexi
             </span>
           </div>
-          <nav className="flex flex-col">
-            {navItems.map((item) => (
+        </div>
+
+        {/* Drawer Navigation Links */}
+        <nav className="flex flex-col py-4 px-3 flex-1 overflow-y-auto">
+          {navItems.map((item) => {
+            const active = isActive(item.path);
+            return (
               <Link
                 key={item.name}
                 href={getNavLink(item)}
-                className={`px-4 py-3 transition-all duration-300 ${
-                  isActive(item.path, item.hash)
-                    ? "text-primary bg-gradient-to-r from-primary/10 to-accent/10 border-l-4 border-primary"
-                    : "text-gray-700 hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10"
+                className={`flex items-center px-4 py-3.5 mx-2 my-1 rounded-xl text-[15px] font-semibold transition-all duration-200 ${
+                  active
+                    ? "text-blue-700 bg-blue-50/80"
+                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                 }`}
                 onClick={() => setMobileOpen(false)}
               >
                 {item.name}
               </Link>
-            ))}
-          </nav>
-          <div className="px-4 mt-4 flex flex-col gap-3">
-            <Reusable_Button
-              text="Login"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary/10"
-            />
-            <Reusable_Button
-              text="Register Now"
-              variant="primary"
-              className="bg-gradient-to-r from-primary to-accent hover:shadow-lg"
-            />
-          </div>
-        </div>
+            );
+          })}
+        </nav>
+
       </div>
     </>
   );

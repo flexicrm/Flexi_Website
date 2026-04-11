@@ -97,10 +97,10 @@ function Product_RoadMap() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
             >
-              What's <span className="text-accent relative inline-block">
+              What's <span className="text-[#3395ff] relative inline-block">
                 Live &amp; Coming
                 <motion.span 
-                  className="absolute bottom-0 left-0 w-full h-1 bg-accent/30 rounded-full"
+                  className="absolute bottom-0 left-0 w-full h-1  rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
@@ -262,35 +262,6 @@ function Product_RoadMap() {
           })}
         </div>
 
-        {/* Call to action */}
-        <ScrollReveal direction="up" delay={0.6}>
-          <motion.div 
-            className="text-center mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/50 backdrop-blur-sm rounded-full shadow-sm">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="w-6 h-6 rounded-full bg-accent/20 border-2 border-white flex items-center justify-center text-[10px] font-bold text-accent">
-                    {i === 1 ? "🚀" : i === 2 ? "💡" : "⭐"}
-                  </div>
-                ))}
-              </div>
-              <span className="text-xs text-black/70">
-                🎯 <span className="font-semibold">{liveCount} module{liveCount !== 1 ? 's' : ''} live</span> • {totalCount - liveCount} in development
-              </span>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="text-xs font-bold text-accent hover:text-accent-dark transition-colors"
-              >
-                View Timeline →
-              </motion.button>
-            </div>
-          </motion.div>
-        </ScrollReveal>
       </div>
     </section>
   );

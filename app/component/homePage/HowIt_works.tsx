@@ -56,7 +56,7 @@ function HowIt_works() {
           title={
             <>
               Up &amp; Running in{" "}
-              <span className="text-primary">4 Simple Steps</span>
+              <span className="text-[#3395ff]">4 Simple Steps</span>
             </>
           }
           sub="No training required. Start managing leads in minutes, not weeks."
@@ -92,7 +92,7 @@ function HowIt_works() {
                         className={`rounded-full flex items-center justify-center mx-auto mb-5 shadow-md ${
                           index === 3
                             ? "bg-accent shadow-accent/30"
-                            : "bg-primary shadow-primary/30"
+                            : "bg-[#3395ff] shadow-primary/30"
                         }`}
                         style={{ width: 60, height: 60 }}
                       >

@@ -58,7 +58,7 @@ const Hr_Operations = () => {
           </motion.p>
           <motion.a
             href="#"
-            className="inline-block py-4 px-10 bg-white text-[#8B5CF6] rounded-[10px] font-['Sora'] font-bold text-[1.05rem] no-underline shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-all"
+            className="inline-block py-4 px-10 bg-[#3395ff] text-white rounded-[10px] font-['Sora'] font-bold text-[1.05rem] no-underline shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:bg-blue-700 transition-all"
             whileHover={{ y: -2, scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
@@ -75,6 +75,9 @@ const Hr_Operations = () => {
           >
             ✓ No credit card required &nbsp;·&nbsp; ✓ Full platform access &nbsp;·&nbsp; ✓ Beta pricing locked
           </motion.div>
+          <a href="/hrms-terms">
+        <p className="font-bold text-white mt-4 cursor-pointer hover:text-gray-400 active:text-white">Terms and Conditions -{">"}</p>
+        </a>
         </motion.div>
       </section>
     </>

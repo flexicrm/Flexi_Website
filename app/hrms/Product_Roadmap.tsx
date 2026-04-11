@@ -81,7 +81,7 @@ const Product_Roadmap = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl lg:text-[2.4rem] font-extrabold text-[#2D3142] mb-4">
-            Product <span className="text-[#8B5CF6]">Roadmap</span>
+            Product <span className="text-[#3395ff]">Roadmap</span>
           </h2>
           <p className="text-[1.05rem] text-[#6B7280] leading-relaxed">
             We're continuously improving Flexi HRMS. Here's what's live now and what's coming next in our journey.

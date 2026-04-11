@@ -83,7 +83,7 @@ function Why_Choose() {
           title={
             <>
               Built for Teams That{" "}
-              <span className="text-primary">Move Fast</span>
+              <span className="text-[#3395ff]">Move Fast</span>
             </>
           }
           sub="Everything you need to capture, nurture, and convert leads — without the complexity."

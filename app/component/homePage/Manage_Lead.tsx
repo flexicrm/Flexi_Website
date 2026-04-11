@@ -20,7 +20,7 @@ import ScrollReveal from "../ui/ScrollReveal";
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <a
               href="/register"
-              className="inline-block px-12 py-4 bg-accent text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-accent-dark transition-all"
+              className="inline-block px-12 py-4 bg-[#3395ff] text-white font-extrabold text-lg rounded-xl shadow-lg hover:bg-blue-700 transition-all"
             >
               Register Now — It's Free
             </a>
@@ -29,6 +29,9 @@ import ScrollReveal from "../ui/ScrollReveal";
             ✓ No credit card required &nbsp;·&nbsp; ✓ Cancel anytime &nbsp;·&nbsp; ✓ Beta access
           </p>
         </ScrollReveal>
+        <a href="/crm-terms">
+        <p className="font-bold text-white mt-4 cursor-pointer hover:text-gray-400 active:text-white">Terms and Conditions -{">"}</p>
+        </a>
       </div>
     </section>
   );

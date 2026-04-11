@@ -117,7 +117,7 @@ const HR_Management = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-4xl lg:text-[2.4rem] font-extrabold text-[#2D3142] mb-4">
-            Everything You Need to <span className="text-[#8B5CF6]">Manage HR</span>
+            Everything You Need to <span className="text-[#3395ff]">Manage HR</span>
           </h2>
           <p className="text-[1.05rem] text-[#6B7280] leading-relaxed">
             Comprehensive HR management system covering every aspect from employee onboarding to payroll processing, all in one unified platform.
