@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
-import favIconForFlexi from "../../../public/favIconForFlexi.png";
+import Flexi_Crm_Image from "../../../public/Flexi_Crm_Image.png";
 import Webdads2u_Logo from "../../../public/Webdads2u_Logo.png";
 
 function Footer() {
@@ -50,8 +50,8 @@ function Footer() {
   ];
 
   const contactInfo = [
-    { icon: MdEmail, text: "flexicrm.in@gmail.com", href: "flexicrm.in@gmail.com" },
-    { icon: MdPhone, text: "+91 9150659909", href: "tel:+91 9150659909" },
+    { icon: MdEmail, text: "flexicrm.in@gmail.com", href: "mailto:flexicrm.in@gmail.com" },
+    { icon: MdPhone, text: "+91 9150659909", href: "tel:+919150659909" },
     { icon: MdLocationOn, text: "San Francisco, CA", href: "#" },
   ];
 
@@ -73,10 +73,10 @@ function Footer() {
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         
-        {/* Top Section with Newsletter */}
+        {/* Top Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mb-12 lg:mb-16">
           
-          {/* Brand Section - 4 columns */}
+          {/* Brand Section - Full width on mobile, 4 cols on desktop */}
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -84,29 +84,19 @@ function Footer() {
             viewport={{ once: true }}
             className="lg:col-span-4 text-center lg:text-left"
           >
-            <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-              <div className="bg-blue-500/20 p-2 rounded-xl">
+              <div className="">
                 <Image 
-                  src={favIconForFlexi} 
+                  src={Flexi_Crm_Image} 
                   alt="Flexi CRM Logo" 
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 object-contain" 
+                  className="w-40 h-20 object-contain" 
                 />
               </div>
-              <div>
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Flexi CRM
-                </h2>
-                <p className="text-xs text-gray-400">Smart CRM for Modern Teams</p>
-              </div>
-            </div>
             <p className="text-sm text-gray-400 leading-relaxed max-w-md mx-auto lg:mx-0">
               The smart, flexible CRM platform for growing teams. Manage leads, close deals, and scale your business — all in one place.
             </p>
             
-            {/* Contact Info */}
-            <div className="mt-6 space-y-3">
+            {/* Contact Info - Hidden on mobile, visible on tablet/desktop */}
+            <div className="hidden sm:block mt-6 space-y-3">
               {contactInfo.map((item, idx) => {
                 const Icon = item.icon;
                 return (
@@ -125,51 +115,66 @@ function Footer() {
             </div>
           </motion.div>
 
-          {/* Footer Links Sections */}
-          {footerSections.map((section, idx) => (
-            <motion.div 
-              key={idx}
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="lg:col-span-2 text-center lg:text-left"
-            >
-              <h3 className="font-sora font-bold text-sm sm:text-base text-white mb-4 relative inline-block lg:inline-block">
-                {section.title}
-                <span className="absolute -bottom-2 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
-              </h3>
-              <ul className="space-y-2.5 mt-4">
-                {section.links.map((link, li) => (
-                  <li key={li}>
-                    <Link
-                      href={link.path}
-                      className="text-sm text-gray-400 hover:text-blue-400 transition-all duration-200 inline-block hover:translate-x-1 lg:hover:translate-x-2"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+          {/* Footer Links Sections - 2 columns on mobile, 4 columns on desktop */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8">
+              {footerSections.map((section, idx) => (
+                <motion.div 
+                  key={idx}
+                  variants={containerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="text-center sm:text-left"
+                >
+                  <h3 className="font-sora font-bold text-sm sm:text-base text-white mb-3 relative inline-block sm:inline-block">
+                    {section.title}
+                    <span className="absolute -bottom-2 left-1/2 sm:left-0 transform -translate-x-1/2 sm:translate-x-0 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+                  </h3>
+                  <ul className="space-y-2 mt-4">
+                    {section.links.map((link, li) => (
+                      <li key={li}>
+                        <Link
+                          href={link.path}
+                          className="text-xs sm:text-sm text-gray-400 hover:text-blue-400 transition-all duration-200 inline-block hover:translate-x-1"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
 
-          {/* Newsletter Section */}
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="lg:col-span-2 text-center lg:text-left"
-          >
-            <h3 className="font-sora font-bold text-sm sm:text-base text-white mb-4 relative inline-block lg:inline-block">
-              Stay Updated
-              <span className="absolute -bottom-2 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
+        {/* Mobile Contact Info - Visible only on mobile */}
+        <div className="sm:hidden mb-8">
+          <div className="border-t border-gray-800 pt-6">
+            <h3 className="font-sora font-bold text-sm text-white mb-4 text-center relative inline-block w-full">
+              Contact Us
+              <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
             </h3>
-            <p className="text-sm text-gray-400 mb-4">Get the latest updates and news.</p>
-          </motion.div>
+            <div className="space-y-3 mt-4">
+              {contactInfo.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={idx}
+                    href={item.href}
+                    className="flex items-center justify-center gap-3 text-gray-400 hover:text-blue-400 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs">{item.text}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Divider */}
@@ -243,7 +248,7 @@ function Footer() {
         </div>
 
         {/* Mobile Bottom Links */}
-        <div className="mt-6 pt-6 border-t border-gray-800 flex flex-wrap justify-center gap-4 text-center md:hidden">
+        <div className="mt-6 pt-6 border-t border-gray-800 flex flex-wrap justify-center gap-4 text-center sm:hidden">
           <Link href="/privacy-policy" className="text-xs text-gray-500 hover:text-blue-400 transition-colors">
             Privacy
           </Link>
