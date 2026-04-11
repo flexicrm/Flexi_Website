@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Flexi_CRM_Full_Logo from "../../../public/Flexi_CRM_Logo.svg";
+import Webdads2u_Logo from "../../../public/Webdads2u_Logo.png";
 
 
  function Footer() {
@@ -95,7 +96,10 @@ import Flexi_CRM_Full_Logo from "../../../public/Flexi_CRM_Logo.svg";
         <hr className="my-8 border-gray-700" />
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500">© 2026 Flexi CRM. All rights reserved. Beta version — built with ❤️</p>
+          <div className="flex items-center gap-2">
+            <p className="text-xs text-gray-500">© 2026 Flexi CRM. All rights reserved. Beta version 0.1 — built with </p>
+          <Image src={Webdads2u_Logo} alt="webdads2u" width={14} height={14}/>
+          </div>
           <div className="flex gap-2">
             {socialIcons.map((social, idx) => {
               const Icon = social.Icon

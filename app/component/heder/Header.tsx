@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 // Assuming these are your valid paths. Adjust if needed.
-import Flexi_CRM_Full_Logo from "../../../public/Flexi_CRM_Full_Logo.svg";
+import Flexi_Crm_Image from "../../../public/Flexi_Crm_Image.png";
 import Flexi_CRM_Logo from "../../../public/Flexi_CRM_Logo.svg";
 
 const navItems = [
@@ -65,9 +65,9 @@ const navItems = [
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group z-50">
             <Image 
-              src={Flexi_CRM_Full_Logo} 
+              src={Flexi_Crm_Image} 
               alt="Flexi CRM Logo" 
-              height={38} 
+              height={50} 
               className="transition-transform duration-300 group-hover:scale-105" 
             />
           </Link>
