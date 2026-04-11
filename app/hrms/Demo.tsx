@@ -58,10 +58,10 @@ const Demo = () => {
 
       {/* HERO SECTION */}
       <motion.section
-        id="home"
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="min-h-screen pt-[120px] pb-20 px-[5%] flex items-center relative overflow-hidden bg-gradient-to-br from-[#f8f9fb] via-[#eef3fb] to-[#f3e8ff]"
-      >
+  id="home"
+  style={{ opacity: heroOpacity, scale: heroScale }}
+  className="min-h-screen pt-[120px] pb-20 px-[5%] flex items-center relative overflow-hidden bg-gradient-to-br from-[#f8f9fb] via-[#eef3fb] to-[#f3e8ff]"
+>
         {/* Animated background blobs */}
         <motion.div
           className="absolute -top-[120px] -right-[120px] w-[600px] h-[600px] rounded-full bg-radial from-[rgba(139,92,246,0.08)] to-transparent pointer-events-none"

@@ -45,12 +45,24 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* FIX: Prevent horizontal scroll on html */
+    overflow-x: hidden;
+    max-width: 100%;
   }
   
   body {
     font-family: var(--font-sora);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* FIX: Prevent horizontal scroll on body */
+    overflow-x: hidden;
+    max-width: 100%;
+    position: relative;
+  }
+  
+  /* FIX: Ensure all elements don't cause overflow */
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 }
 
@@ -90,5 +102,32 @@
   
   ::-webkit-scrollbar-thumb:hover {
     background: var(--color-accent);
+  }
+}
+
+/* FIX: Additional responsive utilities */
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Prevent overflow on all sections */
+  .section-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* Ensure images and videos don't overflow */
+  img, video, iframe {
+    max-width: 100%;
+    height: auto;
   }
 }
