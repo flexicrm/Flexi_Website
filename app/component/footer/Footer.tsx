@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
-import Flexi_CRM_Full_Logo from "../../../public/Flexi_CRM_Logo.svg";
+import favIconForFlexi from "../../../public/favIconForFlexi.png";
 import Webdads2u_Logo from "../../../public/Webdads2u_Logo.png";
 
 function Footer() {
@@ -50,8 +50,8 @@ function Footer() {
   ];
 
   const contactInfo = [
-    { icon: MdEmail, text: "support@flexicrm.com", href: "mailto:support@flexicrm.com" },
-    { icon: MdPhone, text: "+1 (555) 123-4567", href: "tel:+15551234567" },
+    { icon: MdEmail, text: "flexicrm.in@gmail.com", href: "flexicrm.in@gmail.com" },
+    { icon: MdPhone, text: "+91 9150659909", href: "tel:+91 9150659909" },
     { icon: MdLocationOn, text: "San Francisco, CA", href: "#" },
   ];
 
@@ -87,7 +87,7 @@ function Footer() {
             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
               <div className="bg-blue-500/20 p-2 rounded-xl">
                 <Image 
-                  src={Flexi_CRM_Full_Logo} 
+                  src={favIconForFlexi} 
                   alt="Flexi CRM Logo" 
                   width={40}
                   height={40}
@@ -169,16 +169,6 @@ function Footer() {
               <span className="absolute -bottom-2 left-1/2 lg:left-0 transform -translate-x-1/2 lg:translate-x-0 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></span>
             </h3>
             <p className="text-sm text-gray-400 mb-4">Get the latest updates and news.</p>
-            <div className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-              />
-              <button className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg text-sm font-semibold hover:shadow-lg transition-all hover:scale-105">
-                Subscribe
-              </button>
-            </div>
           </motion.div>
         </div>
 
