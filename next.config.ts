@@ -20,7 +20,10 @@ const nextConfig: NextConfig = {
           source: '/register/:path*',
           destination: 'https://user.flexicrm.in/register/:path*',
         },
-        // ✅ Proxy dashboard and all app routes after login
+      ],
+      afterFiles: [],
+      // ✅ Only proxy unmatched routes (after Next.js pages are checked)
+      fallback: [
         {
           source: '/:username/dashboard',
           destination: 'https://user.flexicrm.in/:username/dashboard',
@@ -34,8 +37,6 @@ const nextConfig: NextConfig = {
           destination: 'https://user.flexicrm.in/:username/:path*',
         },
       ],
-      afterFiles: [],
-      fallback: [],
     };
   },
 };
