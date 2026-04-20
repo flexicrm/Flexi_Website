@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        // ✅ Only proxy the register and login HTML pages
         {
           source: '/login',
           destination: 'https://user.flexicrm.in/login',
@@ -21,8 +20,20 @@ const nextConfig: NextConfig = {
           source: '/register/:path*',
           destination: 'https://user.flexicrm.in/register/:path*',
         },
+        // ✅ Proxy dashboard and all app routes after login
+        {
+          source: '/:username/dashboard',
+          destination: 'https://user.flexicrm.in/:username/dashboard',
+        },
+        {
+          source: '/:username/dashboard/:path*',
+          destination: 'https://user.flexicrm.in/:username/dashboard/:path*',
+        },
+        {
+          source: '/:username/:path*',
+          destination: 'https://user.flexicrm.in/:username/:path*',
+        },
       ],
-      // ✅ afterFiles won't interfere with your existing landing page routes
       afterFiles: [],
       fallback: [],
     };
